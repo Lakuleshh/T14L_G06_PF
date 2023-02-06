@@ -8,8 +8,10 @@
 // Phones:   011-2627 8517     |          017-572 1595       |           017-291 0250
 // *******************************************************************************************************
 
+
 #include <iostream>
 #include <vector>
+#include <ctime>
 using namespace std;
 // Using struct to carry multiple variables.
 // Also use to make multiple zombies to make new input, (make sure attributes are randomized)
@@ -158,78 +160,145 @@ void alien(vector<vector<string>> &boardgame, vector<Zombies> &zombie)
             cout << "Life: " << zombie[i].life << endl;
             cout << "Range: " << zombie[i].range << endl;
         }
+
         cout << "Enter direction (up,down,left,right): ";
         string input;
         cin >> input;
 
         if (input == "up")
         {
-            if (AlienRow > 0)
+            while (true)
             {
-                boardgame[AlienRow][AlienColumn] = " . ";
-                AlienRow--;
-                boardgame[AlienRow][AlienColumn] = Alien;
-            }
-            else
-            {
-                cout << "ERROR" << endl;
+                string movem;
+                cout << "Press M/m to continue" << endl;
+                cin >> movem;
+                if (movem == "M" || movem == "m")
+                {
+                    if (AlienRow > 0)
+                    {
+                        boardgame[AlienRow][AlienColumn] = " . ";
+                        AlienRow--;
+                        boardgame[AlienRow][AlienColumn] = Alien;
+                    }
+                }
+                system("CLS");
+                displayboard(boardgame);
+                cout << "Alien - > "
+                     << "life:" << life << "  attack:" << attack << endl;
+                for (int i = 0; i < zombie.size(); i++)
+                {
+                    cout << "\nZombie " << i + 1 << ":" << endl;
+                    cout << "Attack: " << zombie[i].attack << endl;
+                    cout << "Life: " << zombie[i].life << endl;
+                    cout << "Range: " << zombie[i].range << endl;
+                }
+
+                if (AlienRow < 1)
+                {
+                    break;
+                }
             }
         }
         else if (input == "down")
         {
-            if (AlienRow < row - 1)
+            while (true)
             {
-                boardgame[AlienRow][AlienColumn] = " . ";
-                AlienRow++;
-                boardgame[AlienRow][AlienColumn] = Alien;
-            }
-            else
-            {
-                cout << "ERROR" << endl;
+                string movem;
+                cout << "Press M/m to continue" << endl;
+                cin >> movem;
+                if (movem == "M" || movem == "m")
+                {
+
+                    if (AlienRow < row - 1)
+                    {
+                        boardgame[AlienRow][AlienColumn] = " . ";
+                        AlienRow++;
+                        boardgame[AlienRow][AlienColumn] = Alien;
+                    }
+                }
+                system("CLS");
+                displayboard(boardgame);
+                cout << "Alien - > "
+                     << "life:" << life << "  attack:" << attack << endl;
+                for (int i = 0; i < zombie.size(); i++)
+                {
+                    cout << "\nZombie " << i + 1 << ":" << endl;
+                    cout << "Attack: " << zombie[i].attack << endl;
+                    cout << "Life: " << zombie[i].life << endl;
+                    cout << "Range: " << zombie[i].range << endl;
+                }
+                if (AlienRow > row - 2)
+                {
+                    break;
+                }
             }
         }
         else if (input == "left")
         {
-            if (AlienColumn > 0)
+            while (true)
             {
-                boardgame[AlienRow][AlienColumn] = " . ";
-                AlienColumn--;
-                boardgame[AlienRow][AlienColumn] = Alien;
-            }
-            else
-            {
-                cout << "ERROR" << endl;
-            }
-        }
-        else if (input == "left")
-        {
-            if (AlienColumn > 0)
-            {
-                boardgame[AlienRow][AlienColumn] = " . ";
-                AlienColumn--;
-                boardgame[AlienRow][AlienColumn] = Alien;
-            }
-            else
-            {
-                cout << "ERROR" << endl;
+                string movem;
+                cout << "Press M/m to continue" << endl;
+                cin >> movem;
+                if (movem == "M" || movem == "m")
+                {
+
+                    if (AlienColumn > 0)
+                    {
+                        boardgame[AlienRow][AlienColumn] = " . ";
+                        AlienColumn--;
+                        boardgame[AlienRow][AlienColumn] = Alien;
+                    }
+                }
+                system("CLS");
+                displayboard(boardgame);
+                cout << "Alien - > "
+                     << "life:" << life << "  attack:" << attack << endl;
+                for (int i = 0; i < zombie.size(); i++)
+                {
+                    cout << "\nZombie " << i + 1 << ":" << endl;
+                    cout << "Attack: " << zombie[i].attack << endl;
+                    cout << "Life: " << zombie[i].life << endl;
+                    cout << "Range: " << zombie[i].range << endl;
+                }
+                if (AlienColumn < 1)
+                {
+                    break;
+                }
             }
         }
         else if (input == "right")
         {
-            if (AlienColumn < column - 1)
+            while (true)
             {
-                boardgame[AlienRow][AlienColumn] = " . ";
-                AlienColumn++;
-                boardgame[AlienRow][AlienColumn] = Alien;
+                string movem;
+                cout << "Press M/m to continue" << endl;
+                cin >> movem;
+                if (movem == "M" || movem == "m")
+                {
+                    if (AlienColumn < column - 1)
+                    {
+                        boardgame[AlienRow][AlienColumn] = " . ";
+                        AlienColumn++;
+                        boardgame[AlienRow][AlienColumn] = Alien;
+                    }
+                }
+                system("CLS");
+                displayboard(boardgame);
+                cout << "Alien - > "
+                     << "life:" << life << "  attack:" << attack << endl;
+                for (int i = 0; i < zombie.size(); i++)
+                {
+                    cout << "\nZombie " << i + 1 << ":" << endl;
+                    cout << "Attack: " << zombie[i].attack << endl;
+                    cout << "Life: " << zombie[i].life << endl;
+                    cout << "Range: " << zombie[i].range << endl;
+                }
+                if (AlienColumn > column - 2)
+                {
+                    break;
+                }
             }
-            else
-            {
-                cout << "ERROR" << endl;
-            }
-        }
-        else
-        {
-            cout << "OOPS! Invalid move." << endl;
         }
     }
 }
